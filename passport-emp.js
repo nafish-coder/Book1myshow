@@ -878,12 +878,14 @@ theater
 
 
 app.post("/login", function(req, res) {
-  var email = req.body.email;
+
+  var body = req.body;
   
-  let custRec= { email:email,role:"customer"}
+  
+  let custRec= {...body,role:"customer"}
   customers.length>0?customers.splice(0,1,custRec):customers.push(custRec)
   
-console.log(email)
+
   
             res.send(custRec);
 });
