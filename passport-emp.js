@@ -17,42 +17,7 @@ customers = [
   
 ];
 customerDetails = [
-  {
-    name: "Apoorv",
-    gender: "Male",
-    addressLine1: "New Ashok Nagar",
-    state: "Uttar Pradesh",
-    city: " Lucknow ",
-    dob: "7-August-1996",
-    PAN: "AQSON7890T"
-  },
-  {
-    name: "Rachel",
-    gender: "Female",
-    addressLine1: "Sec-115",
-    state: "Uttar Pradesh",
-    city: " Noida ",
-    dob: "17-September-1994",
-    PAN: "AQSDN7123T"
-  },
-  {
-    name: "Nimit",
-    gender: "Male",
-    addressLine1: "Sec-15",
-    state: "Madhya Pradesh",
-    city: " Bhopal ",
-    dob: "7-Jan-1992",
-    PAN: "PQLON7890P"
-  },
-  {
-    name: "Sonia",
-    gender: "Female",
-    addressLine1: "Sec-62",
-    state: "Uttar Pradesh",
-    city: " Noida ",
-    dob: "27-August-1989",
-    PAN: "AQSONAS590T"
-  }
+ 
 ];
 let Movies=[
   
@@ -971,18 +936,16 @@ app.post("/userdata", function(req, res) {
   var body = req.body;
   var email = req.body.email;
 
-  let find=customers.findIndex((st)=>st.email==email)
+console.log("body", body)
   let custRec= {role:"customer",...body}
-  customers.length>0?customers.splice(0,1,custRec):[]
-
-
- 
-  console.log(customers)
-            res.send(custRec);
+  customerDetails.length>0?customerDetails.splice(0,1,body):customerDetails.push(body)
+  console.log("customerDetails",customerDetails)
+  console.log("customerDetails",custRec)
+            res.send(body);
 });
 app.get("/userdata", function(req, res) {
 
-            res.send(customers);
+            res.send(customerDetails);
 });
 app.post("/customerDetails", function(req, res) {
   const custDet = {
