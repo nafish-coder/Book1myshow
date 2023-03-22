@@ -905,7 +905,7 @@ app.post("/ticket", function(req, res) {
   var body = req.body;
 console.log("body",body)
 
-ticket.length>0?ticket.splice(0,1,body):ticket.push(body)
+ticket.push(body)
 console.log("ticket",ticket)
   
             res.send(ticket);
@@ -928,7 +928,13 @@ app.get("/ticketdata", function(req, res) {
   
             res.send(tickethall);
 });
-app.get("/ticket", function(req, res) {
+app.get("/ticket1", function(req, res) {
+
+
+  
+            res.send([ticket[ticket.length-1]]);
+});
+app.get("/ticket2", function(req, res) {
 
 
   
